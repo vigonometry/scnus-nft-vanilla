@@ -13,7 +13,6 @@ export default function LogoutModal(props) {
 		logout()
 		navigation.dispatch(StackActions.replace('Authentication'))
 	}
-	console.log(auth)
 	if(!auth) return <></>
 	return (
 		<Modal visible={props.visible} transparent={true} onRequestClose={props.close}>
