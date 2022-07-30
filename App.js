@@ -7,6 +7,8 @@ import WalletConnectProvider from './misc/wc-tools';
 import {MoralisDappProvider} from './misc/providers/MoralisDappProvider/MoralisDappProvider';
 import { NavigationContainer } from '@react-navigation/native';
 import AppWrapper from './AppWrapper'
+import { Button } from 'react-native';
+import { callStorage } from './contractUtils';
 
 const appId = 'YjvDhD0bAVXWYKxRxXKNPk9Dm0iKlQEhbpVuFMPN';
 const serverUrl = 'https://ynlly4ziyexj.usemoralis.com:2053/server';
@@ -32,6 +34,7 @@ export default function App({children}) {
         <MoralisDappProvider>
           <NavigationContainer>
             <AppWrapper/>
+            <Button onPress={callStorage}>Click Me</Button>
           </NavigationContainer>
         </MoralisDappProvider>
       </MoralisProvider>
