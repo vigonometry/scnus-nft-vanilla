@@ -4,7 +4,7 @@ import { View, Text, Image, Modal, TouchableOpacity } from "react-native";
 import logoutIcon from '../../../assets/icons/logout.png'
 import closeIcon from '../../../assets/icons/x.png'
 import { useMoralis } from "react-moralis";
-import { useMoralisDapp } from "../../../misc/providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../../../misc/providers/MoralisDappProvider";
 
 export default function LogoutModal(props) {
 	const { auth, logout } = useMoralis()

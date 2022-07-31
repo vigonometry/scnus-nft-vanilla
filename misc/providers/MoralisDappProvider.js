@@ -1,6 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useMoralis} from 'react-moralis';
-import MoralisDappContext from './context';
+
+const MoralisDappContext = React.createContext();
 
 function MoralisDappProvider({children}) {
   const {web3, Moralis, user} = useMoralis();

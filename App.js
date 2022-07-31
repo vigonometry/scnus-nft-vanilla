@@ -4,7 +4,7 @@ import Moralis from 'moralis/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { enableViaWalletConnect } from './misc/moralis-tools/enableViaWalletConnect';
 import WalletConnectProvider from './misc/wc-tools';
-import {MoralisDappProvider} from './misc/providers/MoralisDappProvider/MoralisDappProvider';
+import {MoralisDappProvider} from './misc/providers/MoralisDappProvider';
 import { NavigationContainer } from '@react-navigation/native';
 import AppWrapper from './AppWrapper'
 

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Pressable, StyleSheet, Image, Text, FlatList} from 'react-native';
 import {useMoralis} from 'react-moralis';
 import {useNFTBalance} from '../../hooks/useNFTBalance';
-import {useMoralisDapp} from '../../providers/MoralisDappProvider/MoralisDappProvider';
+import {useMoralisDapp} from '../../providers/MoralisDappProvider';
 import {Divider, Card} from '@ui-kitten/components';
 // import Animation from '../../splashLottie1.json';
 // import LottieView from "lottie-react-native";

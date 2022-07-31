@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import logo from '../../../assets/logo.png'
-import { useMoralisDapp } from "../../../misc/providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../../../misc/providers/MoralisDappProvider";
 import LogoutModal from "../auth/LogoutModal";
 
 export default function HomeHeader() {
