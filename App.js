@@ -34,7 +34,6 @@ export default function App({children}) {
         <MoralisDappProvider>
           <NavigationContainer>
             <AppWrapper/>
-            <Button onPress={callStorage}>Click Me</Button>
           </NavigationContainer>
         </MoralisDappProvider>
       </MoralisProvider>

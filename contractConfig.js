@@ -1,188 +1,564 @@
-export const DAPP_ADDRESS = "0x62Cd23bc0FE1c4314cAB3Aa549e2d0b792D2c920";
-
+export const DAPP_ADDRESS = '0x2953399124f0cbb46d2cbacd8a89cf0599974963';
 export const DAPP_ABI = [
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+    inputs: [
+      {internalType: 'string', name: '_name', type: 'string'},
+      {internalType: 'string', name: '_symbol', type: 'string'},
+      {internalType: 'address', name: '_proxyRegistryAddress', type: 'address'},
+      {internalType: 'string', name: '_templateURI', type: 'string'},
+      {internalType: 'address', name: '_migrationAddress', type: 'address'},
     ],
-    "name": "signDocumentClient",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    stateMutability: 'nonpayable',
+    type: 'constructor',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {indexed: false, internalType: 'bool', name: 'approved', type: 'bool'},
     ],
-    "name": "rejectDocument",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'ApprovalForAll',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
+      {indexed: true, internalType: 'uint256', name: '_id', type: 'uint256'},
       {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: '_creator',
+        type: 'address',
+      },
     ],
-    "name": "rejectDocumentClient",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'CreatorChanged',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+        indexed: false,
+        internalType: 'address',
+        name: 'userAddress',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'address payable',
+        name: 'relayerAddress',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'bytes',
+        name: 'functionSignature',
+        type: 'bytes',
+      },
     ],
-    "name": "approveDocument",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'MetaTransactionExecuted',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
     ],
-    "name": "createDocument",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'OwnershipTransferred',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_claimId",
-        "type": "string"
-      }
+        indexed: false,
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
     ],
-    "name": "createClaim",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'Paused',
+    type: 'event',
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_claimId",
-        "type": "string"
-      }
+    anonymous: false,
+    inputs: [
+      {indexed: false, internalType: 'string', name: '_value', type: 'string'},
+      {indexed: true, internalType: 'uint256', name: '_id', type: 'uint256'},
     ],
-    "name": "rejectClaim",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'PermanentURI',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_claimId",
-        "type": "string"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {indexed: true, internalType: 'address', name: 'from', type: 'address'},
+      {indexed: true, internalType: 'address', name: 'to', type: 'address'},
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'ids',
+        type: 'uint256[]',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'values',
+        type: 'uint256[]',
+      },
     ],
-    "name": "approveClaim",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    name: 'TransferBatch',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address',
+      },
+      {indexed: true, internalType: 'address', name: 'from', type: 'address'},
+      {indexed: true, internalType: 'address', name: 'to', type: 'address'},
+      {indexed: false, internalType: 'uint256', name: 'id', type: 'uint256'},
+      {indexed: false, internalType: 'uint256', name: 'value', type: 'uint256'},
     ],
-    "name": "getSignatoriesDocument",
-    "outputs": [
-      {
-        "internalType": "address[3]",
-        "name": "",
-        "type": "address[3]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    name: 'TransferSingle',
+    type: 'event',
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_docuId",
-        "type": "string"
-      }
+    anonymous: false,
+    inputs: [
+      {indexed: false, internalType: 'string', name: 'value', type: 'string'},
+      {indexed: true, internalType: 'uint256', name: 'id', type: 'uint256'},
     ],
-    "name": "getStatusDocument",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    name: 'URI',
+    type: 'event',
   },
   {
-    "inputs": [
+    anonymous: false,
+    inputs: [
       {
-        "internalType": "string",
-        "name": "_claimId",
-        "type": "string"
-      }
+        indexed: false,
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
     ],
-    "name": "getSignatoriesClaim",
-    "outputs": [
-      {
-        "internalType": "address[2]",
-        "name": "",
-        "type": "address[2]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    name: 'Unpaused',
+    type: 'event',
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_claimId",
-        "type": "string"
-      }
+    inputs: [],
+    name: 'ERC712_VERSION',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: '_address', type: 'address'}],
+    name: 'addSharedProxyAddress',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_owner', type: 'address'},
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
     ],
-    "name": "getStatusClaim",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
+    name: 'balanceOf',
+    outputs: [{internalType: 'uint256', name: '', type: 'uint256'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address[]', name: 'accounts', type: 'address[]'},
+      {internalType: 'uint256[]', name: 'ids', type: 'uint256[]'},
     ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  }
-]
+    name: 'balanceOfBatch',
+    outputs: [{internalType: 'uint256[]', name: '', type: 'uint256[]'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_from', type: 'address'},
+      {internalType: 'uint256[]', name: '_ids', type: 'uint256[]'},
+      {internalType: 'uint256[]', name: '_quantities', type: 'uint256[]'},
+    ],
+    name: 'batchBurn',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_to', type: 'address'},
+      {internalType: 'uint256[]', name: '_ids', type: 'uint256[]'},
+      {internalType: 'uint256[]', name: '_quantities', type: 'uint256[]'},
+      {internalType: 'bytes', name: '_data', type: 'bytes'},
+    ],
+    name: 'batchMint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_from', type: 'address'},
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'uint256', name: '_quantity', type: 'uint256'},
+    ],
+    name: 'burn',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'creator',
+    outputs: [{internalType: 'address', name: '', type: 'address'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'disableMigrate',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: 'userAddress', type: 'address'},
+      {internalType: 'bytes', name: 'functionSignature', type: 'bytes'},
+      {internalType: 'bytes32', name: 'sigR', type: 'bytes32'},
+      {internalType: 'bytes32', name: 'sigS', type: 'bytes32'},
+      {internalType: 'uint8', name: 'sigV', type: 'uint8'},
+    ],
+    name: 'executeMetaTransaction',
+    outputs: [{internalType: 'bytes', name: '', type: 'bytes'}],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'exists',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getChainId',
+    outputs: [{internalType: 'uint256', name: '', type: 'uint256'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getDomainSeperator',
+    outputs: [{internalType: 'bytes32', name: '', type: 'bytes32'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: 'user', type: 'address'}],
+    name: 'getNonce',
+    outputs: [{internalType: 'uint256', name: 'nonce', type: 'uint256'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_owner', type: 'address'},
+      {internalType: 'address', name: '_operator', type: 'address'},
+    ],
+    name: 'isApprovedForAll',
+    outputs: [{internalType: 'bool', name: 'isOperator', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'isPermanentURI',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'maxSupply',
+    outputs: [{internalType: 'uint256', name: '', type: 'uint256'}],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {internalType: 'uint256', name: 'id', type: 'uint256'},
+          {internalType: 'address', name: 'owner', type: 'address'},
+        ],
+        internalType: 'struct AssetContractShared.Ownership[]',
+        name: '_ownerships',
+        type: 'tuple[]',
+      },
+    ],
+    name: 'migrate',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'migrationTarget',
+    outputs: [
+      {internalType: 'contract AssetContractShared', name: '', type: 'address'},
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_to', type: 'address'},
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'uint256', name: '_quantity', type: 'uint256'},
+      {internalType: 'bytes', name: '_data', type: 'bytes'},
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'name',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'openSeaVersion',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'owner',
+    outputs: [{internalType: 'address', name: '', type: 'address'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'pause',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'paused',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'proxyRegistryAddress',
+    outputs: [{internalType: 'address', name: '', type: 'address'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: '_address', type: 'address'}],
+    name: 'removeSharedProxyAddress',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_from', type: 'address'},
+      {internalType: 'address', name: '_to', type: 'address'},
+      {internalType: 'uint256[]', name: '_ids', type: 'uint256[]'},
+      {internalType: 'uint256[]', name: '_amounts', type: 'uint256[]'},
+      {internalType: 'bytes', name: '_data', type: 'bytes'},
+    ],
+    name: 'safeBatchTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: '_from', type: 'address'},
+      {internalType: 'address', name: '_to', type: 'address'},
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'uint256', name: '_amount', type: 'uint256'},
+      {internalType: 'bytes', name: '_data', type: 'bytes'},
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'address', name: 'operator', type: 'address'},
+      {internalType: 'bool', name: 'approved', type: 'bool'},
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'address', name: '_to', type: 'address'},
+    ],
+    name: 'setCreator',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'string', name: '_uri', type: 'string'},
+    ],
+    name: 'setPermanentURI',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: '_address', type: 'address'}],
+    name: 'setProxyRegistryAddress',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'string', name: '_uri', type: 'string'}],
+    name: 'setTemplateURI',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {internalType: 'uint256', name: '_id', type: 'uint256'},
+      {internalType: 'string', name: '_uri', type: 'string'},
+    ],
+    name: 'setURI',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: '', type: 'address'}],
+    name: 'sharedProxyAddresses',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'supportsFactoryInterface',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'bytes4', name: 'interfaceId', type: 'bytes4'}],
+    name: 'supportsInterface',
+    outputs: [{internalType: 'bool', name: '', type: 'bool'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'symbol',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'templateURI',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'totalSupply',
+    outputs: [{internalType: 'uint256', name: '', type: 'uint256'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'address', name: 'newOwner', type: 'address'}],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'unpause',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{internalType: 'uint256', name: '_id', type: 'uint256'}],
+    name: 'uri',
+    outputs: [{internalType: 'string', name: '', type: 'string'}],
+    stateMutability: 'view',
+    type: 'function',
+  },
+];

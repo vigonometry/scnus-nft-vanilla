@@ -11,6 +11,7 @@ import { StyleSheet, SafeAreaView, StatusBar, View, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import ERC20Balance from "../Assets/ERC20Balance";
 import { useWalletConnect } from "../../WalletConnect";
+import { callMint } from "../../../contractUtils";
 
 const color = "#315399";
 
@@ -110,7 +111,7 @@ function Transfer() {
                   : styles.diabledButton
               }
               labelStyle={{ color: "white", fontSize: 20 }}
-              onPress={TransferTheCoins}>
+              onPress={callMint}>
               Transfer
             </Button>
           </View>
