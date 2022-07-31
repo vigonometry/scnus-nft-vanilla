@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   absolute: { position: "absolute" },
   black: { backgroundColor: "black" },
   white: { backgroundColor: "white" },
-
   center: { alignItems: "center", justifyContent: "center" },
+  centerWithOverlay: { alignItems: "center", justifyContent: "center" },
   border: { borderColor: "black", borderWidth: 10 },
   flex: { flex: 1 },
   fullWidth: { width: "100%" },
   halfHeight: { height: "50%" },
-  noOverflow: { overflow: "hidden" },
+  // noOverflow: { overflow: "hidden" },
   row: { alignItems: "center", flexDirection: "row" },
   centeredView: {
     flex: 1,
@@ -48,25 +48,27 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
     elevation: 5,
   },
   button: {
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 10,
+    padding: 12,
+    paddingHorizontal: 20,
     elevation: 2,
+    marginTop: 12
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#364378",
   },
   textStyle: {
     color: "white",
-    fontWeight: "bold",
     textAlign: "center",
+    fontSize: 18
   },
   modalText: {
     marginBottom: 15,
@@ -185,11 +187,10 @@ export default function QrcodeModal({
       // presentationStyle="formSheet"
       //onRequestClose={() => onDismiss()}
     >
-      <View style={[styles.flex, styles.center]}>
+      <View style={[styles.flex, styles.centerWithOverlay ]}>
         <View
           style={[
             styles.modalView,
-            styles.noOverflow,
             { width: modalWidth, height: modalHeight },
           ]}
           pointerEvents={visible ? "box-none" : "none"}>
@@ -238,9 +239,9 @@ export default function QrcodeModal({
                     renderItem={renderItem}
                   />
                 )}
-                <TouchableOpacity onPress={onPressLogo}>
+                {/* <TouchableOpacity onPress={onPressLogo}>
                   <WalletConnectLogo width={modalListWidth} />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </Animated.View>
 
               {/* logo */}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { WalletService } from "../types";
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   fullWidth: { width: "100%" },
-  icon: { borderRadius: 15 },
+  icon: { borderRadius: 10, marginBottom: 8 },
   noOverflow: { overflow: "hidden" },
   title: {
     color: "grey",
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   padding: { padding: 5 },
+  iconContainer: { borderRadius: 10, shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 6, shadowOffset: { width: 0, height: 4 } },
 });
 
 export default function WalletServiceIcon({
@@ -45,16 +46,16 @@ export default function WalletServiceIcon({
     [connectToWalletService, walletService]
   );
   return (
-    <View>
+    <View style={{ opacity: walletService.name === 'MetaMask' ? 1 : 0.3 }}>
       <TouchableOpacity
-        onPress={onPress}
-        style={[{ width, height }, styles.container, styles.padding]}>
+        onPress={walletService.name === 'MetaMask' ? onPress : () => { Alert.alert('Coming soon!', `Support for ${walletService.name} is coming soon!`)}}
+        style={[{ width, height }, styles.container, styles.padding, styles.iconContainer]}>
         <Image
           style={[
             styles.icon,
             {
-              width: height * 0.6,
-              height: height * 0.6,
+              width: height * 0.75,
+              height: height * 0.75,
             },
           ]}
           source={{ uri }}

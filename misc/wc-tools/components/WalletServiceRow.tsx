@@ -16,7 +16,7 @@ export type WalletServiceRowProps = {
 };
 
 const styles = StyleSheet.create({
-  row: { alignItems: 'center', flexDirection: 'row' },
+  row: { alignItems: 'center', flexDirection: 'row', marginBottom: 24 },
 });
 
 export default function WalletServiceRow({
