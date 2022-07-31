@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { useMoralis } from "react-moralis";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import logo from '../../../assets/logo.png'
+import { useMoralisDapp } from "../../../misc/providers/MoralisDappProvider/MoralisDappProvider";
 import LogoutModal from "../auth/LogoutModal";
 
 export default function HomeHeader() {
-	const { account } = useMoralis()
-	const address = account || 'XXXXXXXXXXXXXXXX'
+	const { walletAddress } = useMoralisDapp()
+	const address = walletAddress || '0xXXXXXXXXXXXXXXXX'
 	const [logoutVisible, setLogoutVisible] = useState(false)
 	return (
 		<>
