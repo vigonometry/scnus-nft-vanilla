@@ -5,7 +5,6 @@ import HomeBodyContainer from "../components/home/HomeBodyContainer";
 import HomeHeader from "../components/home/HomeHeader";
 import RecentTokenView from "../components/recent-tokens/RecentTokenView";
 import TierView from "../components/tier/TierView";
-import { useWeb3ExecuteFunction } from "react-moralis";
 
 export default function HomeScreen() {
 	const { getNFTBalance, NFTBalance } = useNFTBalance()

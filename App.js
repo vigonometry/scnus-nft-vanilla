@@ -14,27 +14,27 @@ const environment = 'native';
 Moralis.setAsyncStorage(AsyncStorage);
 Moralis.enable = enableViaWalletConnect;
 const walletConnectOptions = {
-  storageOptions: { asyncStorage: AsyncStorage },
-  qrcodeModalOptions: { mobileLinks: [
-    'rainbow',
-    'metamask',
-    'argent',
-    'trust',
-    'imtoken',
-    'pillar',
-  ]},
+	storageOptions: { asyncStorage: AsyncStorage },
+	qrcodeModalOptions: { mobileLinks: [
+		'rainbow',
+		'metamask',
+		'argent',
+		'trust',
+		'imtoken',
+		'pillar',
+	]},
 }
 
 export default function App({children}) {
-  return (
-    <WalletConnectProvider {...walletConnectOptions}>
-      <MoralisProvider appId={appId} serverUrl={serverUrl} environment={environment}>
-        <MoralisDappProvider>
-          <NavigationContainer>
-            <AppWrapper/>
-          </NavigationContainer>
-        </MoralisDappProvider>
-      </MoralisProvider>
-    </WalletConnectProvider>
-  )
+	return (
+		<WalletConnectProvider {...walletConnectOptions}>
+			<MoralisProvider appId={appId} serverUrl={serverUrl} environment={environment}>
+				<MoralisDappProvider>
+					<NavigationContainer>
+						<AppWrapper/>
+					</NavigationContainer>
+				</MoralisDappProvider>
+			</MoralisProvider>
+		</WalletConnectProvider>
+	)
 }

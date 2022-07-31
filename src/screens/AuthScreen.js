@@ -29,7 +29,7 @@ export default function AuthScreen() {
 						<Text style={{ fontSize: 18, marginTop: 24, textAlign: 'center' }}>Scan and collect tokens, and enjoy rewards from over 15 F&#38;B outlets.</Text>
 						<View style={{ width: '100%', position: 'absolute', height: 110, top: '100%' }}>
 							<TouchableOpacity onPress={handleLogin} activeOpacity={0.8} style={{ backgroundColor: '#F3904F', marginTop: 48, width: '100%', padding: 20, borderRadius: 12, shadowRadius: 20, shadowColor: '#000', shadowOpacity: 0.2, shadowOffset: { height: 12 } }}>
-								<Text style={{ color: '#fff', textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Connect Walletaaa</Text>
+								<Text style={{ color: '#fff', textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>Connect Wallet</Text>
 							</TouchableOpacity>
 							<Text style={{ textAlign: 'center', fontSize: 14, marginTop: 16, opacity: 0.3 }}>We recommend using the MetaMask wallet!</Text>
 						</View>

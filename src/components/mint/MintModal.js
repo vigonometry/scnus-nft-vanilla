@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useWeb3ExecuteFunction } from "react-moralis";
 import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 import close from '../../../assets/icons/x.png'
+import { CALL_STORAGE_OBJ } from "../../../contractConfig";
 
 export default function MintModal(props) {
+	const { data, error, fetch, isFetching, isLoading } = useWeb3ExecuteFunction(CALL_STORAGE_OBJ)
 	const mint = () => {
 		if (props.token) {
 			// setUser({
@@ -10,10 +13,17 @@ export default function MintModal(props) {
 			// 	ownedTokens: [props.token, ...user.ownedTokens],
 			// 	unownedTokens: user.unownedTokens.filter(t => t.hash != props.token.hash)
 			// })
-			console.log('minted')
+			fetch()
 			props.close()
 		}
 	}
+	useEffect(() => {
+		console.log(`data: ${data}`)
+		console.log(`erro: ${error}`)
+		console.log(`isFetching: ${isFetching}`)
+		console.log(`isLoading: ${isLoading}`)
+		console.log()
+	}, [isFetching, data, isLoading])
 	return (
 		<Modal visible={!!props.token} transparent={true} onRequestClose={props.close}>
 			{
