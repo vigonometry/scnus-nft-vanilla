@@ -7,6 +7,7 @@ import WalletConnectProvider from './misc/wc-tools';
 import {MoralisDappProvider} from './misc/providers/MoralisDappProvider';
 import { NavigationContainer } from '@react-navigation/native';
 import AppWrapper from './AppWrapper'
+import ScaNUSTokensProvider from './misc/providers/ScaNUSTokensProvider';
 
 const appId = 'YjvDhD0bAVXWYKxRxXKNPk9Dm0iKlQEhbpVuFMPN';
 const serverUrl = 'https://ynlly4ziyexj.usemoralis.com:2053/server';
@@ -30,9 +31,11 @@ export default function App({children}) {
 		<WalletConnectProvider {...walletConnectOptions}>
 			<MoralisProvider appId={appId} serverUrl={serverUrl} environment={environment}>
 				<MoralisDappProvider>
-					<NavigationContainer>
-						<AppWrapper/>
-					</NavigationContainer>
+					<ScaNUSTokensProvider>
+						<NavigationContainer>
+							<AppWrapper/>
+						</NavigationContainer>
+					</ScaNUSTokensProvider>
 				</MoralisDappProvider>
 			</MoralisProvider>
 		</WalletConnectProvider>
