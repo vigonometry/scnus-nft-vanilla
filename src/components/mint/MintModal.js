@@ -1,32 +1,33 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 import close from '../../../assets/icons/x.png'
-import { CALL_STORAGE_OBJ } from "../../../contractConfig";
+import { DAPP_ABI, DAPP_ADDRESS } from "../../../contractConfig";
 import useScaNUSTokens from "../../../misc/hooks/useScaNUSTokens";
 
 export default function MintModal(props) {
-	const { data, error, fetch, isFetching, isLoading } = useWeb3ExecuteFunction(CALL_STORAGE_OBJ)
+	const { fetch } = useWeb3ExecuteFunction()
+	const makeOptions = (tokenId) => ({
+		abi: DAPP_ABI,
+		contractAddress: DAPP_ADDRESS,
+		functionName: 'withdraw',
+		params: ({
+			_id: tokenId
+		})
+	})
 	const { addToken } = useScaNUSTokens()
 	const mint = () => {
 		if (props.token) {
-			fetch()
-			// CHANGE BELOW TO IF FETCH SUCCESSFUL
-			if (true) {
-				addToken(props.token.tokenId)
-			} else {
-				// CAN OPEN A MODAL HERE TO SHOW THAT TRANSACTION UNSUX
-			}
-			props.close()
+			fetch({ params: makeOptions(props.token.tokenId)})
+				.then(res => {
+					addToken(props.token.tokenId)
+					props.close()
+				})
+				.catch(e => {
+					console.log(e)
+				})
 		}
 	}
-	useEffect(() => {
-		// console.log(`data: ${data}`)
-		// console.log(`erro: ${error}`)
-		// console.log(`isFetching: ${isFetching}`)
-		// console.log(`isLoading: ${isLoading}`)
-		// console.log()
-	}, [isFetching, data, isLoading])
 	return (
 		<Modal visible={!!props.token} transparent={true} onRequestClose={props.close}>
 			{
