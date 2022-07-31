@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions, FlatList, Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native";
-import { SAMPLE_USER } from "../constants/sampleUser";
+import useScaNUSTokens from "../../misc/hooks/useScaNUSTokens";
 
 const TokenItem = (props) => {
 	const viewportWidth = Dimensions.get('window').width
@@ -21,6 +21,7 @@ const TokenItem = (props) => {
 
 export default function TokensScreen() {
 	const navigation = useNavigation()
+	const { ownedTokens } = useScaNUSTokens()
 	return (
 		<>
 			<StatusBar barStyle='dark-content'/>
@@ -34,9 +35,9 @@ export default function TokensScreen() {
 			</SafeAreaView>
 			<FlatList
 				contentContainerStyle={{ paddingVertical: 12, paddingBottom: 48 }} 
-				data={SAMPLE_USER.ownedTokens}
+				data={ownedTokens}
 				renderItem={({ item }) => <TokenItem token={item}/>}
-				keyExtractor={i => i.hash}
+				keyExtractor={i => i.tokenId}
 				showsVerticalScrollIndicator={false}
 			/>
 		</>

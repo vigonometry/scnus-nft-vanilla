@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ScaNUSTokensContext } from "../providers/ScaNUSTokensProvider"
 
 export default function useScaNUSTokens() {
@@ -7,8 +7,14 @@ export default function useScaNUSTokens() {
 		ownedTokenIds, 
 		setOwnedTokenIds 
 	} = useContext(ScaNUSTokensContext)
+	const [ownedTokens, setOwnedTokens] = useState([])
+	useEffect(() => {
+		setOwnedTokens(tokens.filter(t => ownedTokenIds.includes(t.tokenId)))
+	}, [ownedTokenIds, tokens])
 	return {
 		tokens,
-		ownedTokenIds
+		ownedTokenIds,
+		ownedTokens,
+		addToken: (tokenId) => setOwnedTokenIds([tokenId, ...ownedTokenIds])
 	}
 }

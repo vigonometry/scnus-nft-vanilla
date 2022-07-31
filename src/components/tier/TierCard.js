@@ -4,12 +4,13 @@ import scan from '../../../assets/icons/scan.png'
 import merchant from '../../../assets/icons/merchant.png'
 import ActionButton from "./ActionButton";
 import { getCurrentTier, getNextTier } from "../../utils/tierUtils";
-import { SAMPLE_USER } from "../../constants/sampleUser";
+import useScaNUSTokens from "../../../misc/hooks/useScaNUSTokens";
 
 export default function TierCard() {
-	const currentTier = getCurrentTier(SAMPLE_USER.ownedTokens)
-	const nextTier = getNextTier(SAMPLE_USER.ownedTokens)
-	const currOwned = SAMPLE_USER.ownedTokens.length
+	const { ownedTokenIds } = useScaNUSTokens()
+	const currentTier = getCurrentTier(ownedTokenIds)
+	const nextTier = getNextTier(ownedTokenIds)
+	const currOwned = ownedTokenIds.length
 	const ownedInTier = currOwned - currentTier.req
 	const remainder = nextTier ? nextTier.req - currOwned : currentTier.req + 5 - currOwned
 	const totalTierTokens = nextTier ? nextTier.req - currentTier.req : 5
@@ -20,7 +21,6 @@ export default function TierCard() {
 				{ remainder !== 0 ? `Collect ${remainder} more to ${nextTier ? 'reach next tier' : 'finish ScaNUS'}!` : 'Congratulations! You collected every token!'}
 			</Text>
 			<View style={{ width: '100%', height: 30, backgroundColor: '#fff', marginTop: 16, borderRadius: 12, overflow: 'hidden'}}>
-				
 				<View style={{ width: `${100 * (ownedInTier / totalTierTokens)}%`, height: 30, backgroundColor: '#e67e22'}}/>
 			</View>
 			<View style={{ flex: 1, flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-around', maxHeight: 40, marginTop: 30, paddingTop: 20 }}>

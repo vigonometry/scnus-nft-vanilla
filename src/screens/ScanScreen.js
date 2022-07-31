@@ -4,16 +4,18 @@ import LinearGradient from "react-native-linear-gradient";
 import { Image, SafeAreaView, StatusBar, TouchableOpacity, View } from "react-native"
 import back from '../../assets/icons/back.png'
 import MintModal from "../components/mint/MintModal"
-import { SAMPLE_USER } from "../constants/sampleUser";
 import QRCodeScanner from 'react-native-qrcode-scanner'
+import useScaNUSTokens from "../../misc/hooks/useScaNUSTokens";
 
 export default function ScanScreen() {
 	const [tokenToMint, setTokenToMint] = useState(null)
 	const navigation = useNavigation()
+	const { ownedTokenIds, tokens } = useScaNUSTokens()
 	const handleScan = ({ data }) => {
-		const mapped = SAMPLE_USER.unownedTokens.find(t => t.hash === data)
-		if (!tokenToMint && mapped) {
-			setTokenToMint(mapped)
+		const exists = !ownedTokenIds.includes(data) && tokens.map(t => t.tokenId).includes(data)
+		if (!tokenToMint && exists) {
+			const token = tokens.find(t => t.tokenId === data)
+			setTokenToMint(token)
 		}
 	}
 	return (
