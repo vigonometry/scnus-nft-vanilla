@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native"
 import { Dimensions, FlatList, Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native"
-import { SAMPLE_MERCHANTS } from "../constants/sampleMerchants"
+import useScaNUSTokens from "../../misc/hooks/useScaNUSTokens";
 
 const MerchantItem = (props) => {
 	const viewportWidth = Dimensions.get('window').width
@@ -21,6 +21,8 @@ const MerchantItem = (props) => {
 
 export default function MerchantsScreen() {
 	const navigation = useNavigation()
+	const { merchants } = useScaNUSTokens()
+	if (!merchants || merchants.length === 0) return <></>
 	return (
 		<>
 			<StatusBar barStyle='dark-content'/>
@@ -34,7 +36,7 @@ export default function MerchantsScreen() {
 			</SafeAreaView>
 			<FlatList
 				contentContainerStyle={{ paddingVertical: 12, paddingBottom: 48 }} 
-				data={SAMPLE_MERCHANTS}
+				data={merchants}
 				renderItem={({ item }) => <MerchantItem merchant={item}/>}
 				keyExtractor={i => i.logo}
 				showsVerticalScrollIndicator={false}

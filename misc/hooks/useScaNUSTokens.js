@@ -3,6 +3,8 @@ import { ScaNUSTokensContext } from "../providers/ScaNUSTokensProvider"
 
 export default function useScaNUSTokens() {
 	const { 
+		merchants,
+		tiers,
 		tokens, 
 		ownedTokenIds, 
 		setOwnedTokenIds 
@@ -12,6 +14,8 @@ export default function useScaNUSTokens() {
 		setOwnedTokens(tokens.filter(t => ownedTokenIds.includes(t.tokenId)))
 	}, [ownedTokenIds, tokens])
 	return {
+		merchants,
+		tiers,
 		tokens,
 		ownedTokenIds,
 		ownedTokens,

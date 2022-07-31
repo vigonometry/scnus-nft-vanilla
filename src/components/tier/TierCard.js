@@ -7,9 +7,10 @@ import { getCurrentTier, getNextTier } from "../../utils/tierUtils";
 import useScaNUSTokens from "../../../misc/hooks/useScaNUSTokens";
 
 export default function TierCard() {
-	const { ownedTokenIds } = useScaNUSTokens()
-	const currentTier = getCurrentTier(ownedTokenIds)
-	const nextTier = getNextTier(ownedTokenIds)
+	const { ownedTokenIds, tiers } = useScaNUSTokens()
+	if (!tiers || tiers.length === 0) return <></>
+	const currentTier = getCurrentTier(ownedTokenIds, tiers)
+	const nextTier = getNextTier(ownedTokenIds, tiers)
 	const currOwned = ownedTokenIds.length
 	const ownedInTier = currOwned - currentTier.req
 	const remainder = nextTier ? nextTier.req - currOwned : currentTier.req + 5 - currOwned
