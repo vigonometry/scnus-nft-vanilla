@@ -5,7 +5,7 @@ platform :ios, '11.0'
 
 pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
-target 'EthereumRNBoilerplate' do
+target 'ScaNUS' do
   config = use_native_modules!
 
   use_react_native!(
@@ -14,7 +14,7 @@ target 'EthereumRNBoilerplate' do
     :hermes_enabled => false
   )
 
-  target 'EthereumRNBoilerplateTests' do
+  target 'ScaNUSTests' do
     inherit! :complete
     # Pods for testing
   end
