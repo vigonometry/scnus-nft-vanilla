@@ -148,10 +148,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storeFile file('scnus.keystore')
+            storePassword "bRZRF6jTdfmHg2fF"
+            keyAlias 'scnuskey'
+            keyPassword "bRZRF6jTdfmHg2fF"
         }
     }
     buildTypes {
@@ -186,6 +186,9 @@ android {
             }
 
         }
+    }
+    dexOptions {
+       javaMaxHeapSize "3g"
     }
 }
 
