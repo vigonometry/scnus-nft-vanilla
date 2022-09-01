@@ -62,11 +62,12 @@ export default function WalletConnectProvider({
     async (uri: string, cb: unknown): Promise<unknown> => {
       if (Platform.OS === 'android') {
         const canOpenURL = await Linking.canOpenURL(uri);
-        if (!canOpenURL) {
-          // Redirect the user to download a wallet.
-          Linking.openURL('https://walletconnect.com/registry?type=wallet');
-          throw new Error('No wallets found.');
-        }
+        // TEMPORARILY REMOVED TO FIX A BUG >:(
+        // if (!canOpenURL) {
+        //   // Redirect the user to download a wallet.
+        //   Linking.openURL('https://walletconnect.com/registry?type=wallet');
+        //   throw new Error('No wallets found.');
+        // }
         await Linking.openURL(uri);
       }
       setState({
