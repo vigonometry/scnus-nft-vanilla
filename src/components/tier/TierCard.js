@@ -17,8 +17,8 @@ export default function TierCard() {
 	const totalTierTokens = nextTier ? nextTier.req - currentTier.req : 5
 	return (
 		<View style={{ width: '100%', padding: 24, backgroundColor: '#ecf0f1', marginTop: 24, minHeight: 240, borderRadius: 12, shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.1, shadowRadius: 6}}>
-			<Text style={{ textTransform: 'uppercase', letterSpacing: 2, fontSize: 26}}>{currentTier.name}</Text>
-			<Text style={{ marginTop: 4, opacity: 0.6, fontSize: 14}}>
+			<Text style={{ color: '#000', textTransform: 'uppercase', letterSpacing: 2, fontSize: 26}}>{currentTier.name}</Text>
+			<Text style={{ color: '#000', marginTop: 4, opacity: 0.6, fontSize: 14}}>
 				{ remainder !== 0 ? `Collect ${remainder} more to ${nextTier ? 'reach next tier' : 'finish ScaNUS'}!` : 'Congratulations! You collected every token!'}
 			</Text>
 			<View style={{ width: '100%', height: 30, backgroundColor: '#fff', marginTop: 16, borderRadius: 12, overflow: 'hidden'}}>

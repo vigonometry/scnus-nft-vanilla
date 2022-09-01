@@ -12,8 +12,8 @@ const TokenItem = (props) => {
 				<Image source={{ uri: props.token.image }} style={{ width: 100, height: 100, borderRadius: 8 }}/>
 			</View>
 			<View style={{ paddingVertical: 10, paddingHorizontal: 20, width: viewportWidth - 140 }}>
-				<Text style={{ fontWeight: 'bold', fontSize: 20 }}>{props.token.name}</Text>
-				<Text style={{ marginTop: 8 }} numberOfLines={3}>{props.token.description}</Text>
+				<Text style={{ color: '#000', fontWeight: 'bold', fontSize: 20 }}>{props.token.name}</Text>
+				<Text style={{ color: '#000', marginTop: 8 }} numberOfLines={3}>{props.token.description}</Text>
 			</View>
 		</TouchableOpacity>
 	)
@@ -30,7 +30,7 @@ export default function TokensScreen() {
 					<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.goBack()}>
 						<Image source={require('../../assets/icons/back.png')} style={{ width: 30, height: 30 }}/>
 					</TouchableOpacity>
-					<Text style={{ marginLeft: 12, fontSize: 20, fontWeight: 'bold'}}>Your Tokens</Text>
+					<Text style={{ color: '#000', marginLeft: 12, fontSize: 20, fontWeight: 'bold'}}>Your Tokens</Text>
 				</View>
 			</SafeAreaView>
 			<FlatList

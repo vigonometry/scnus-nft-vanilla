@@ -7,7 +7,7 @@ export default function ActionButton(props) {
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate(props.name)} activeOpacity={0.8} style={{ height: 70, alignItems: 'center' }}>
 			<Image source={props.icon} style={{height: 50, width: 50, tintColor: '#888' }}/>
-			<Text style={{ marginTop: 6 }}>{props.name}</Text>
+			<Text style={{ color: '#000', marginTop: 6 }}>{props.name}</Text>
 		</TouchableOpacity>
 	)
 }

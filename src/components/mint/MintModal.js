@@ -45,18 +45,18 @@ export default function MintModal(props) {
 					<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)'}}>
 						<View style={{ width: '90%', backgroundColor: 'white', borderRadius: 10 }}>
 							<View style={{ display: 'flex', padding: 30, paddingBottom: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-								<Text style={{ fontSize: 20, fontWeight: 'bold' }}>{ isSuccess === undefined ? 'Mint Token' : isSuccess ? 'Success!' : 'Failed :('}</Text>
+								<Text style={{ color: '#000', fontSize: 20, fontWeight: 'bold' }}>{ isSuccess === undefined ? 'Mint Token' : isSuccess ? 'Success!' : 'Failed :('}</Text>
 								<TouchableOpacity onPress={() => { setIsSuccess(undefined); props.close(); }}>
 									<Image source={close} style={{ width: 30, height: 30 }}/>
 								</TouchableOpacity>
 							</View>
 							<View style={{ padding: 30, paddingTop: 10 }}>
 								{isSuccess === undefined ? (
-									<Text style={{ fontSize: 18, lineHeight: 18*1.618 }}>You found a new token! You are now able to mint <Text style={{ fontWeight: 'bold' }}>{props.token.name}</Text></Text>
+									<Text style={{ color: '#000', fontSize: 18, lineHeight: 18*1.618 }}>You found a new token! You are now able to mint <Text style={{ color: '#000', fontWeight: 'bold' }}>{props.token.name}</Text></Text>
 								) : isSuccess ? (
-									<Text style={{ fontSize: 18, lineHeight: 18*1.618 }}>You have successfully minted <Text style={{ fontWeight: 'bold' }}>{props.token.name}</Text></Text>
+									<Text style={{ color: '#000', fontSize: 18, lineHeight: 18*1.618 }}>You have successfully minted <Text style={{ color: '#000', fontWeight: 'bold' }}>{props.token.name}</Text></Text>
 								) : (
-									<Text style={{ fontSize: 18, lineHeight: 18*1.618 }}>There was an error while minting <Text style={{ fontWeight: 'bold' }}>{props.token.name}</Text></Text>
+									<Text style={{ color: '#000', fontSize: 18, lineHeight: 18*1.618 }}>There was an error while minting <Text style={{ color: '#000', fontWeight: 'bold' }}>{props.token.name}</Text></Text>
 								)}
 								<TouchableOpacity onPress={isSuccess ? backHome : mint} activeOpacity={0.8} style={{ backgroundColor: isSuccess === undefined ? '#364378' : isSuccess ? '#27ae60' : '#c0392b', padding: 12, marginTop: 24, alignItems: 'center', width: 160, borderRadius: 12 }}>
 									<Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>{ isSuccess === undefined ? 'Mint!' : isSuccess ? 'Back Home' : 'Try Again' }</Text>
